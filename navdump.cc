@@ -526,7 +526,9 @@ try
       }
       if(wtype == 6) {
         cout<<" a0 " << gm.a0 <<" a1 " << gm.a1 <<" t0t "<<gm.t0t << " dtLS "<<(int)gm.dtLS;
+        cout <<" wnLSF "<< (unsigned int)gm.wnLSF<<" dn " << (unsigned int)gm.dn<< " dtLSF "<<(int)gm.dtLSF<<endl;
       }
+
       
       //      if(wtype < 7)
       //        gm = GalileoMessage{};
@@ -618,7 +620,7 @@ try
         cout <<" t0e "<<gm.t0e;
       }
       if(gm.wtype == 4) {
-        cout <<" dtLS "<<(int)gm.dtLS;
+        cout <<" dtLS "<<(int)gm.dtLS <<" wnLSF "<< (unsigned int)gm.wnLSF<<" dn " << (unsigned int)gm.dn<< " dtLSF "<<(int)gm.dtLSF<<endl;
       }
 
       cout<<endl;
@@ -729,7 +731,7 @@ try
           cout<<" 2nd-match "<<second.name << " dist "<<second.distance/1000<<" km t0e "<<gs.gpsalma.getT0e() << " t " <<nmm.localutcseconds();
         }
         if(page == 18)
-          cout << " dtLS " << (int)gs.dtLS <<" dtLSF "<< (int)gs.dtLSF;
+          cout << " wnLSF "<< (int)gs.wnLSF <<" dn " << (int)gs.dn << " t0t " << (int)gs.t0t <<" wn0t "<<(int)gs.wn0t<<" dtLS " << (int)gs.dtLS <<" dtLSF "<< (int)gs.dtLSF;
       }
       else if(frame == 5) {
         if(gs.gpsalma.sv <= 24) {
@@ -881,8 +883,6 @@ try
         cout<<" best-tle-match "<<match.name <<" dist "<<match.distance /1000<<" km";
         cout<<" norad " <<match.norad <<" int-desig " << match.internat;
         cout<<" 2nd-match "<<second.name << " dist "<<second.distance/1000<<" km";
-
-
       }
       else if((fraid == 4 && 1<= pageno && pageno <= 24) ||
               (fraid == 5 && 1<= pageno && pageno <= 6) ||
@@ -913,7 +913,7 @@ try
         cout<<" WNa "<<getbitu(&cond[0], beidouBitconv(190), 8)<<" t0a "<<getbitu(&cond[0], beidouBitconv(198), 8);
       }
       else if(bm.fraid == 5 && pageno==10) {
-        cout <<" dTLS "<< (int)bm.deltaTLS;
+        cout <<" dTLS "<< (int)bm.deltaTLS << " dTLSF " << (int) bm.deltaTLSF <<" wnLSF " << (unsigned int)bm.wnLSF <<" dn "<<(unsigned int)  bm.dn<<endl;
       }
       else if(bm.fraid == 5 && pageno==24) {
         int AmID= getbitu(&cond[0], beidouBitconv(216), 2);
